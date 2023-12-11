@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:layout_width="600dp"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/albumcover">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="500dp"
+        android:layout_height="60dp"
+        android:background="#711A1A"
+        android:layout_gravity="bottom"/>
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blurLayout"
+        android:layout_width="1080px"
+        android:layout_height="674dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="-396dp"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ConstraintFirst"
+            android:layout_width="393dp"
+            android:layout_height="673dp"
+            android:layout_gravity="center_horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="393dp"
+                android:layout_height="351dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/blurBottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ImageView
+                    android:id="@+id/imageLeft"
+                    android:layout_width="169dp"
+                    android:layout_height="157dp"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="-131dp"
+                    android:layout_marginTop="160dp"
+                    android:layout_marginBottom="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/albumcover" />
+
+
+                <ImageView
+                    android:id="@+id/imageMiddle"
+                    android:layout_width="234dp"
+                    android:layout_height="229dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="160dp"
+                    android:layout_marginEnd="44dp"
+                    android:layout_marginBottom="150dp"
+                    android:background="@drawable/rounded_image"
+                    app:srcCompat="@drawable/albumcover" />
+
+                <ImageView
+                    android:id="@+id/imageRight"
+                    android:layout_width="169dp"
+                    android:layout_height="157dp"
+                    android:layout_gravity="center|start"
+                    android:layout_marginTop="160dp"
+                    android:layout_marginBottom="150dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/albumcover" />
+            </LinearLayout>
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blurBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="-333dp"
+                android:background="@drawable/rounded_constrain"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.501">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="343dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sweettalk My Heart"
+                        android:textColor="#000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.136"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.114" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tove Lo"
+                        android:textColor="#000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.106"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.213" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="90dp"
+                        android:layout_height="16dp"
+                        android:text="Sunshine Kitty"
+                        android:textColor="#000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.118"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.272" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar"
+                        android:layout_width="293dp"
+                        android:layout_height="19dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.44" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.136"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.504" />
+
+                    <TextView
+                        android:id="@+id/EndTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-2.45"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.861"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.504" />
+
+                    <ImageView
+                        android:id="@+id/playButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="164dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.724"
+                        app:srcCompat="@drawable/avd_play_to_pause" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </eightbitlab.com.blurview.BlurView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </eightbitlab.com.blurview.BlurView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
