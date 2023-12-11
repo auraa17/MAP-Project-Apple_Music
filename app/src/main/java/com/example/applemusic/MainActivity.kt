@@ -1,6 +1,5 @@
 package com.example.applemusic
-
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -11,8 +10,26 @@ import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import eightbitlab.com.blurview.BlurView
+
+class MyApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
+    }
+}
+
+data class User(
+    val name: String? = "",
+    val songs: Map<String, Boolean>? = null,
+    val images: Map<String, Boolean>? = null
+)
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +41,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var music: MediaPlayer
     private val mHandler = Handler()
+
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private lateinit var currentUser: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +59,14 @@ class MainActivity : AppCompatActivity() {
         blurBackground()
 
         music = MediaPlayer.create(this, R.raw.notyouoo)
+
+        // Initialize Firebase components
+        database = FirebaseDatabase.getInstance().reference
+        auth = FirebaseAuth.getInstance()
+        currentUser = auth.currentUser!!
+
+        // Fetch user data from Firebase
+        fetchUserData()
 
         playButton.setOnClickListener {
             musicControl(it)
@@ -130,5 +159,25 @@ class MainActivity : AppCompatActivity() {
         val minutes = seconds / 60
         seconds %= 60
         return String.format("%02d:%02d", minutes, seconds)
+    }
+
+    private fun fetchUserData() {
+        val userReference = database.child("Users").child(currentUser.uid)
+
+        userReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val userData = snapshot.getValue(User::class.java)
+                    userData?.let {
+                        // Now userData contains the user's data (songs, images, etc.)
+                        // Update your UI with the fetched data...
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+            }
+        })
     }
 }
